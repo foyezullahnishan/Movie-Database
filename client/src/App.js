@@ -7,28 +7,33 @@ import MovieFormPage from './pages/MovieFormPage';
 import MovieDetailPage from './pages/MovieDetailPage';
 import Layout from './components/Layout';
 import { AuthProvider } from './contexts/AuthContext';
-import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
+import { ThemeProvider as MuiThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminPage from './pages/AdminPage';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { useTheme } from './contexts/ThemeContext';
 
-// Create a custom theme
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#1976d2',
-    },
-    secondary: {
-      main: '#dc004e',
-    },
-  },
-  typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-  },
-});
+function AppContent() {
+  const { darkMode } = useTheme();
 
-function App() {
+  // Create a theme based on darkMode state
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+      primary: {
+        main: '#1976d2',
+      },
+      secondary: {
+        main: '#dc004e',
+      },
+    },
+    typography: {
+      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    },
+  });
+
   return (
-    <ThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <AuthProvider>
         <Router>
@@ -49,6 +54,14 @@ function App() {
           </Routes>
         </Router>
       </AuthProvider>
+    </MuiThemeProvider>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
     </ThemeProvider>
   );
 }

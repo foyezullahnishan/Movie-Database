@@ -138,7 +138,6 @@ const MovieDetailPage = () => {
             p: 3, 
             mb: 4, 
             borderRadius: 3,
-            background: 'linear-gradient(to right, #f5f5f5, #ffffff)'
           }}
         >
           <Typography variant="h5" gutterBottom sx={{ 
@@ -163,7 +162,6 @@ const MovieDetailPage = () => {
           p: 3, 
           mb: 4, 
           borderRadius: 3,
-          background: 'linear-gradient(to right, #f5f5f5, #ffffff)'
         }}
       >
         <Typography 
@@ -218,7 +216,7 @@ const MovieDetailPage = () => {
             mt: 2,
             fontStyle: 'italic',
             lineHeight: 1.6,
-            backgroundColor: 'rgba(0,0,0,0.03)',
+            backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)',
             p: 2,
             borderRadius: 2
           }}>
@@ -244,7 +242,6 @@ const MovieDetailPage = () => {
             p: 4, 
             mb: 4, 
             borderRadius: 3,
-            background: 'linear-gradient(145deg, #ffffff, #f9f9f9)'
           }}
         >
           <Typography variant="h5" gutterBottom sx={{ 
@@ -270,7 +267,6 @@ const MovieDetailPage = () => {
           p: 4, 
           mb: 4, 
           borderRadius: 3,
-          background: 'linear-gradient(145deg, #ffffff, #f9f9f9)'
         }}
       >
         <Typography 
@@ -307,10 +303,10 @@ const MovieDetailPage = () => {
                 mb: 2,
                 p: 2,
                 borderRadius: 2,
-                backgroundColor: 'rgba(0,0,0,0.02)',
+                backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
                 transition: 'all 0.3s',
                 '&:hover': {
-                  backgroundColor: 'rgba(0,0,0,0.05)',
+                  backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
                   transform: 'translateY(-2px)'
                 }
               }}>
@@ -687,7 +683,6 @@ const MovieDetailPage = () => {
               p: 4, 
               mb: 4, 
               borderRadius: 3,
-              background: 'linear-gradient(145deg, #ffffff, #f9f9f9)'
             }}
           >
             <Typography 
@@ -727,7 +722,6 @@ const MovieDetailPage = () => {
             sx={{ 
               p: 4, 
               borderRadius: 3,
-              background: 'linear-gradient(145deg, #ffffff, #f9f9f9)'
             }}
           >
             <Typography 
@@ -748,7 +742,7 @@ const MovieDetailPage = () => {
                 <Box sx={{ 
                   p: 2, 
                   borderRadius: 2, 
-                  bgcolor: 'rgba(0,0,0,0.03)',
+                  bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)',
                   height: '100%'
                 }}>
                   <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 1 }}>
@@ -764,7 +758,7 @@ const MovieDetailPage = () => {
                 <Box sx={{ 
                   p: 2, 
                   borderRadius: 2, 
-                  bgcolor: 'rgba(0,0,0,0.03)',
+                  bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)',
                   height: '100%'
                 }}>
                   <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 1 }}>
@@ -780,7 +774,7 @@ const MovieDetailPage = () => {
                 <Box sx={{ 
                   p: 2, 
                   borderRadius: 2, 
-                  bgcolor: 'rgba(0,0,0,0.03)'
+                  bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)'
                 }}>
                   <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 2 }}>
                     Genres
@@ -860,11 +854,15 @@ const MovieDetailPage = () => {
                         transition: 'transform 0.3s, box-shadow 0.3s',
                         '&:hover': {
                           transform: 'translateY(-8px)',
-                          boxShadow: '0 10px 25px rgba(0,0,0,0.15)'
+                          boxShadow: theme.palette.mode === 'dark' 
+                            ? '0 10px 25px rgba(255,255,255,0.1)' 
+                            : '0 10px 25px rgba(0,0,0,0.15)'
                         },
                         borderRadius: 3,
                         overflow: 'hidden',
-                        boxShadow: '0 6px 15px rgba(0,0,0,0.1)'
+                        boxShadow: theme.palette.mode === 'dark'
+                          ? '0 6px 15px rgba(255,255,255,0.07)'
+                          : '0 6px 15px rgba(0,0,0,0.1)'
                       }}
                     >
                       <Link 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useTheme } from '../contexts/ThemeContext';
 import {
   AppBar,
   Toolbar,
@@ -16,10 +17,13 @@ import {
 } from '@mui/material';
 import MovieIcon from '@mui/icons-material/Movie';
 import PersonIcon from '@mui/icons-material/Person';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useState } from 'react';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
+  const { darkMode, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -73,6 +77,16 @@ const Navbar = () => {
               </Button>
             )}
           </Box>
+
+          {/* Theme toggle button */}
+          <IconButton 
+            color="inherit" 
+            onClick={toggleTheme} 
+            sx={{ mr: 2 }}
+            aria-label="toggle dark/light mode"
+          >
+            {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
 
           {user ? (
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
